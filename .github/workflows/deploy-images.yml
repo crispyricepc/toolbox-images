@@ -23,7 +23,7 @@ jobs:
          password: ${{ secrets.GITHUB_TOKEN }}
 
      - name: Extract metadata (tags, labels) for Docker
-       id: meta
+       id: base-meta
        uses: docker/metadata-action@v4
        with:
          images: ${{ env.REGISTRY }}/crispyricepc/toolbox-base
@@ -34,7 +34,7 @@ jobs:
          context: .
          file: base.Containerfile
          push: true
-         tags: ${{ steps.meta.outputs.tags }}
-         labels: ${{ steps.meta.outputs.labels }}
+         tags: ${{ steps.base-meta.outputs.tags }}
+         labels: ${{ steps.base-meta.outputs.labels }}
          cache-from: type=registry,ref=crispyricepc/toolbox-base:main
          cache-to: type=inline
