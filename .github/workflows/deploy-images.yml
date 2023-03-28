@@ -26,7 +26,7 @@ jobs:
        id: meta
        uses: docker/metadata-action@v4
        with:
-         images: ${{ env.REGISTRY }}/crispyricepc/toolbox-images
+         images: ${{ env.REGISTRY }}/crispyricepc/toolbox-base
 
      - name: Build and push Docker image
        uses: docker/build-push-action@v4
